@@ -4,7 +4,8 @@ import requests
 
 class Api:
     """contain the methods to request the API"""
-    def get_products(self, category):
+    @staticmethod
+    def get_products(category):
         """return the name of the first 15 products from the given category
         obtained from the API
         """
@@ -23,8 +24,8 @@ class Api:
                 quant += 1
             ite += 1
         return products
-
-    def get_alternative(self, product_code):
+    @staticmethod
+    def get_alternative(product_code):
         """get a alternative product with a better nutri_score
         reuse EVERY category of the original products to find
         a similar product then check if the nutriscore is better

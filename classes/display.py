@@ -11,7 +11,8 @@ class Display():
         print('1 - Trouver un produit de substitution.')
         print('2 - Voir vos produits de substitution enregistrés')
 
-    def display_separator(self):
+    @staticmethod
+    def display_separator():
         """For a better display, this function is called at the beginning
         at almost every others to create a separator between each step
         of the program
@@ -20,7 +21,8 @@ class Display():
         print('')
         print('_______________________________________________________')
 
-    def display_input(self):
+    @staticmethod
+    def display_input():
         """This the input used, asking the user to select a number or 'home'"""
         print('_______________________________________________________')
         choice = input('Saissisez le numéro de votre choix ou "home" pour revenir au départ : ')

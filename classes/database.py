@@ -1,8 +1,9 @@
-"""Import mysql.connector to communicate with sever"""
+"""Import mysql.connector to communicate with sever
+and the CONSTANT var required
+"""
 import mysql.connector
-"""Import the required CONSTANTS"""
-from secret import HOST, USER, PASSWD
 from config import CATEGORIES
+from secret import HOST, USER, PASSWD
 
 class Database:
     """This class is used for every iteraction with the database,
@@ -151,7 +152,7 @@ class Database:
             self.mycursor.execute(query, data)
             self.connector.commit()
             print("Le produit :", data[0], "a bien été enregistré")
-        except:
+        except mysql.connector.errors.IntegrityError:
             print("Ce produit a déjà été enregistré")
 
     def get_saved_alternative(self, product):

@@ -24,6 +24,8 @@ class Main():
                 self.select_category(display)
             elif choice == "2":
                 self.select_saved_categories(display)
+            elif choice == "exit":
+                exit()
             else:
                 print('Incorrect choice, please try again.')
                 next = False
@@ -44,6 +46,9 @@ class Main():
             try:
                 if int(choice) - 1 in range(len(CATEGORIES)):
                     self.select_product(display, CATEGORIES[int(choice) - 1])
+                else:
+                    print('Incorrect choice, please try again.')
+                    next = False
             except ValueError:
                 print('Incorrect choice, please try again.')
                 next = False
@@ -75,8 +80,11 @@ class Main():
             try:
                 if int(choice) - 1 in range(len(products)):
                     self.select_alternative(display, products[int(choice) - 1], api, database)
-            except:
-                print('Incorrect choice, please try again')
+                else:
+                    print('Choix incorrect, veuillez réessayer')
+                    next = False
+            except ValueError:
+                print('Choix incorrect, veuillez réessayer')
                 next = False
 
     def select_alternative(self, display, product, api, database):
@@ -87,14 +95,21 @@ class Main():
         alternative = api.get_alternative(product[2])
         if alternative:
             display.display_alternative(product, alternative)
-            choice = display.display_input()
-            if choice == "home":
-                self.__init__()
-            elif choice == "1":
-                data = (alternative['product_name'], alternative['id'], alternative['url'],
-                        alternative['nutriments']['nutrition-score-fr'], product[0])
-                database.insert_alternative(data)
-                self.__init__()
+            next = False
+            #Input phase to choose next step
+            while not next:
+                next = True
+                choice = display.display_input()
+                if choice == "home":
+                    self.__init__()
+                elif choice == "1":
+                    data = (alternative['product_name'], alternative['id'], alternative['url'],
+                            alternative['nutriments']['nutrition-score-fr'], product[0])
+                    database.insert_alternative(data)
+                    self.__init__()
+                else:
+                    print('Choix incorrect, veuillez réessayer')
+                    next = False
         else:
             print("Désolé, aucun produit de substition trouvé pour cet article"
                   "retour à l'accueil")
@@ -118,8 +133,11 @@ class Main():
                 try:
                     if int(choice) - 1 in range(len(categories)):
                         self.select_saved_products(display, categories[int(choice) - 1], database)
+                    else:
+                        print('Choix incorrect, veuillez réessayer')
+                        next = False
                 except ValueError:
-                    print('Incorrect choice, please try again')
+                    print('Choix incorrect, veuillez réessayer')
                     next = False
         else:
             print("Désolé vous n'avez pas encore enregistré de produit alternatif")
@@ -140,6 +158,9 @@ class Main():
             try:
                 if int(choice) - 1 in range(len(products)):
                     self.select_saved_alternative(display, products[int(choice) - 1], database)
+                else:
+                    print('Choix incorrect, veuillez réessayer')
+                    next = False
             except ValueError:
                 print('Incorrect choice, please try again')
                 next = False
@@ -153,12 +174,13 @@ class Main():
         #Input phase to choose next step
         next = False
         while not next:
-            choice = input("Tapez 'Home' pour revenir à l'écran d'accueil")
+            next = True
+            choice = input("Tapez 'Home' pour revenir à l'écran d'accueil :")
             if choice == "home":
-                next = True
                 self.__init__()
             else:
                 print('Choix incorrect, veuillez réessayer.')
+                next = False
 
 
 if __name__ == "__main__":
