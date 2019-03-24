@@ -1,1 +1,1 @@
-CATEGORIES = [('Glaces',), ('Yaourts',), ('Brownies',), ('Salades',),]
+CATEGORIES= [(1, 'Glaces',), (2, 'Yaourts',), (3, 'Brownies',), (4, 'Salades',),]
