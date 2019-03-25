@@ -1,4 +1,4 @@
-# OpenFoodFact
+# ChangeYourFood
 
 An application made to find alternative food, select a product from a chosen category and it will find you a similar product, but better, according to nutriscore rating.
 
@@ -7,9 +7,9 @@ An application made to find alternative food, select a product from a chosen cat
 To make it work, you will need Mysqli installed. 
 
 But also to create a file name 'secret.py' at the root of the project containing the information of your database:
-HOST="YOUR_HOST"
-USER="YOUR_USER"
-PASSWD="YOUR_PASSWORD"
+HOST="YOUR_HOST"  
+USER="YOUR_USER"  
+PASSWD="YOUR_PASSWORD"  
 
 also, please install the modules listed in the requirement.txt file.
 
