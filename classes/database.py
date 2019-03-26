@@ -82,7 +82,7 @@ class Database:
         query = "CREATE TABLE IF NOT EXISTS Products" +\
                 "(id INTEGER(2) PRIMARY KEY NOT NULL AUTO_INCREMENT," +\
                 "name VARCHAR(155) NOT NULL," +\
-                "codebar BIGINT NOT NULL," +\
+                "codebar VARCHAR(13) NOT NULL," +\
                 "url VARCHAR(155) NOT NULL," +\
                 "nutriscore INTEGER(2) NOT NULL," +\
                 "category_id INTEGER(2) NOT NULL," +\
@@ -134,7 +134,7 @@ class Database:
         query = "CREATE TABLE IF NOT EXISTS Alternatives" +\
                 "(id INTEGER(2) PRIMARY KEY NOT NULL AUTO_INCREMENT," +\
                 "name VARCHAR (155) NOT NULL," +\
-                "codebar BIGINT NOT NULL," +\
+                "codebar BIGINT (13) NOT NULL," +\
                 "url VARCHAR(155) NOT NULL," +\
                 "nutriscore INTEGER(2) NOT NULL," +\
                 "product_id INTEGER (2) NOT NULL UNIQUE," +\

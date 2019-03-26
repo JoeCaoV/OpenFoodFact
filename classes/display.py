@@ -64,7 +64,7 @@ class Display():
         self.display_separator()
         print('Voici la liste des catégories contenant des produits sauvegardés')
         for index, category in enumerate(categories):
-            print(index +1, category)
+            print(index +1, category[1])
         print('Selectionnez la categorie de votre choix en saissisant son numéro')
 
     def display_saved_products(self, products):

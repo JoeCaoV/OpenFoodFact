@@ -16,9 +16,9 @@ class Main():
         2 to check the saved alternative products
         """
         display = Display()
-        next = False
-        while not next:
-            next = True
+        next_step = False
+        while not next_step:
+            next_step = True
             choice = display.display_input()
             if choice == "1":
                 self.select_category(display)
@@ -28,7 +28,7 @@ class Main():
                 exit()
             else:
                 print('Incorrect choice, please try again.')
-                next = False
+                next_step = False
 
     def select_category(self, display):
         """if user choose 1 at the "home" menu
@@ -37,9 +37,9 @@ class Main():
         """
         display.display_categories()
         #Input phase to choose next step
-        next = False
-        while not next:
-            next = True
+        next_step = False
+        while not next_step:
+            next_step = True
             choice = display.display_input()
             if choice == "home":
                 self.__init__()
@@ -48,10 +48,10 @@ class Main():
                     self.select_product(display, CATEGORIES[int(choice) - 1])
                 else:
                     print('Incorrect choice, please try again.')
-                    next = False
+                    next_step = False
             except ValueError:
                 print('Incorrect choice, please try again.')
-                next = False
+                next_step = False
 
     def select_product(self, display, category):
         """Once the user choose a caterogy for changeable products
@@ -70,10 +70,10 @@ class Main():
 
         products = database.get_products(category[0])
         display.display_products(products)
-        next = False
+        next_step = False
         #Input phase to choose next step
-        while not next:
-            next = True
+        while not next_step:
+            next_step = True
             choice = display.display_input()
             if choice == "home":
                 self.__init__()
@@ -82,10 +82,10 @@ class Main():
                     self.select_alternative(display, products[int(choice) - 1], api, database)
                 else:
                     print('Choix incorrect, veuillez réessayer')
-                    next = False
+                    next_step = False
             except ValueError:
                 print('Choix incorrect, veuillez réessayer')
-                next = False
+                next_step = False
 
     def select_alternative(self, display, product, api, database):
         """Display the alternative food for the chosen product
@@ -95,10 +95,10 @@ class Main():
         alternative = api.get_alternative(product[2])
         if alternative:
             display.display_alternative(product, alternative)
-            next = False
+            next_step = False
             #Input phase to choose next step
-            while not next:
-                next = True
+            while not next_step:
+                next_step = True
                 choice = display.display_input()
                 if choice == "home":
                     self.__init__()
@@ -109,7 +109,7 @@ class Main():
                     self.__init__()
                 else:
                     print('Choix incorrect, veuillez réessayer')
-                    next = False
+                    next_step = False
         else:
             print("Désolé, aucun produit de substition trouvé pour cet article"
                   "retour à l'accueil")
@@ -124,9 +124,9 @@ class Main():
         if categories:
             display.display_saved_categories(categories)
             #Input phase to choose next step
-            next = False
-            while not next:
-                next = True
+            next_step = False
+            while not next_step:
+                next_step = True
                 choice = display.display_input()
                 if choice == "home":
                     self.__init__()
@@ -135,10 +135,10 @@ class Main():
                         self.select_saved_products(display, categories[int(choice) - 1], database)
                     else:
                         print('Choix incorrect, veuillez réessayer')
-                        next = False
+                        next_step = False
                 except ValueError:
                     print('Choix incorrect, veuillez réessayer')
-                    next = False
+                    next_step = False
         else:
             print("Désolé vous n'avez pas encore enregistré de produit alternatif")
             print("Retour au menu de départ")
@@ -148,10 +148,10 @@ class Main():
         """Display the product with a registred alternative"""
         products = database.get_saved_products(category[0])
         display.display_saved_products(products)
-        #Input phase to choose next step
-        next = False
-        while not next:
-            next = True
+        #Input phase to choose next_step step
+        next_step = False
+        while not next_step:
+            next_step = True
             choice = display.display_input()
             if choice == "home":
                 self.__init__()
@@ -160,10 +160,10 @@ class Main():
                     self.select_saved_alternative(display, products[int(choice) - 1], database)
                 else:
                     print('Choix incorrect, veuillez réessayer')
-                    next = False
+                    next_step = False
             except ValueError:
                 print('Incorrect choice, please try again')
-                next = False
+                next_step = False
 
     def select_saved_alternative(self, display, product, database):
         """display the alternative product and compare him
@@ -171,16 +171,16 @@ class Main():
         """
         alternative = database.get_saved_alternative(product)
         display.display_saved_alternative(product, alternative)
-        #Input phase to choose next step
-        next = False
-        while not next:
-            next = True
+        #Input phase to choose next_step step
+        next_step = False
+        while not next_step:
+            next_step = True
             choice = input("Tapez 'Home' pour revenir à l'écran d'accueil :")
             if choice == "home":
                 self.__init__()
             else:
                 print('Choix incorrect, veuillez réessayer.')
-                next = False
+                next_step = False
 
 
 if __name__ == "__main__":
