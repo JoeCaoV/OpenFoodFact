@@ -111,7 +111,7 @@ class Main():
                     print('Choix incorrect, veuillez réessayer')
                     next_step = False
         else:
-            print("Désolé, aucun produit de substition trouvé pour cet article"
+            print("Désolé, aucun produit de substition trouvé pour cet article "
                   "retour à l'accueil")
             self.__init__()
 

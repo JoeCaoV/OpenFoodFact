@@ -18,7 +18,8 @@ class Api:
         while ite < quant:
             try:
                 #checking if the product has a nutriscore
-                if json["products"][ite]['nutriments']['nutrition-score-fr']:
+                if (json["products"][ite]['nutriments']['nutrition-score-fr'] and
+                    json["products"][ite]['product_name']):
                     products.append(json["products"][ite])
             except KeyError:
                 quant += 1

@@ -39,7 +39,7 @@ class Display():
     def display_products(self, products):
         """display the list of products given as arguent"""
         self.display_separator()
-        print('Voici 20 produits de la catégorie choisie')
+        print('Voici jusqu\'à 15 produits de la catégorie choisie')
         print('Choissisez le numéro de la catégorie pour voir ses subsitus')
         for i, product in enumerate(products):
             print(i + 1, product[1])
