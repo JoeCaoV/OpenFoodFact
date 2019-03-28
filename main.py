@@ -120,6 +120,8 @@ class Main():
         user must choose a category
         """
         database = Database()
+        #calling it twice to prevent a mysql problem
+        database = Database()
         categories = database.get_saved_categories()
         if categories:
             display.display_saved_categories(categories)
@@ -140,7 +142,7 @@ class Main():
                     print('Choix incorrect, veuillez réessayer')
                     next_step = False
         else:
-            print("Désolé vous n'avez pas encore enregistré de produit alternatif")
+            print("Désolé vous n'avez pas encore enregistré de produit alternatif ")
             print("Retour au menu de départ")
             self.__init__()
 

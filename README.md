@@ -4,7 +4,7 @@ An application made to find alternative food, select a product from a chosen cat
 
 # REQUIREMENTS : 
 
-To make it work, you will need Mysqli installed. 
+To make it work, you will need Mysql installed. 
 
 But also to create a file name 'secret.py' at the root of the project containing the information of your database:
 HOST="YOUR_HOST"  
