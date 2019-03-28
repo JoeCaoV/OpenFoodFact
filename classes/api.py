@@ -24,6 +24,7 @@ class Api:
                 quant += 1
             ite += 1
         return products
+
     @staticmethod
     def get_alternative(product_code):
         """get a alternative product with a better nutri_score
